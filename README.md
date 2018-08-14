@@ -2,8 +2,8 @@ VSTS Agent Pools and Deployment Pools Docker Image
 ==================================================
 
 This repository contains: 
-`Dockerfile` definitions for [lincolnzocateli/agent-pools](https://github.com/lincolnzocateli/vsts-agent-docker/agent-pools) and 
-`Dockerfile` definitions for [lincolnzocateli/agent-deployment](https://github.com/lincolnzocateli/vsts-agent-docker/agent-deployment) Docker images.
+- `Dockerfile` definitions for [lincolnzocateli/agent-pools](https://github.com/lincolnzocateli/vsts-agent-docker/tree/master/agent-pools) and 
+- `Dockerfile` definitions for [lincolnzocateli/agent-deployment](https://github.com/lincolnzocateli/vsts-agent-docker/tree/master/agent-deployment) Docker images.
 
 [![Downloads from Docker Hub](https://img.shields.io/docker/pulls/lzocateli/vsts-agent-ci.svg)](https://registry.hub.docker.com/u/lzocateli/vsts-agent-ci)
 [![Stars on Docker Hub](https://img.shields.io/docker/stars/lzocateli/vsts-agent-ci.svg)](https://registry.hub.docker.com/u/lzocateli/vsts-agent-ci) [![](https://images.microbadger.com/badges/image/lzocateli/vsts-agent-ci.svg)](https://microbadger.com/images/lzocateli/vsts-agent-ci "Get your own image badge on microbadger.com")
@@ -50,7 +50,7 @@ adding to docker run `-v /agent/_works:/agent/_works`.
 ## License
 
 This software is open source, licensed under the Apache License, Version 2.0.
-See [LICENSE.txt](https://github.com/lincolnzocateli/vsts-agent-docker/blob/master/LICENSE.txt) for details.
+See [LICENSE](https://github.com/lincolnzocateli/vsts-agent-docker/blob/master/LICENSE) for details.
 Check out the terms of the license before you contribute, fork, copy or do anything
 with the code. If you decide to contribute you agree to grant copyright of all your contribution to this project, and agree to
 mention clearly if do not agree to these terms. Your work will be licensed with the project at Apache V2, along the rest of the code.
