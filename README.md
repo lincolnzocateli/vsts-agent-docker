@@ -1,7 +1,9 @@
 VSTS Agent Pools and Deployment Pools Docker Image
 ==================================================
 
-This repository contains `Dockerfile` definitions for [lzocateli/vsts-agent-ci](https://github.com/lzocateli/vsts-agent-ci) Docker images.
+This repository contains: 
+`Dockerfile` definitions for [lincolnzocateli/agent-pools](https://github.com/lincolnzocateli/vsts-agent-docker/agent-pools) and 
+`Dockerfile` definitions for [lincolnzocateli/agent-deployment](https://github.com/lincolnzocateli/vsts-agent-docker/agent-deployment) Docker images.
 
 [![Downloads from Docker Hub](https://img.shields.io/docker/pulls/lzocateli/vsts-agent-ci.svg)](https://registry.hub.docker.com/u/lzocateli/vsts-agent-ci)
 [![Stars on Docker Hub](https://img.shields.io/docker/stars/lzocateli/vsts-agent-ci.svg)](https://registry.hub.docker.com/u/lzocateli/vsts-agent-ci) [![](https://images.microbadger.com/badges/image/lzocateli/vsts-agent-ci.svg)](https://microbadger.com/images/lzocateli/vsts-agent-ci "Get your own image badge on microbadger.com")
@@ -13,10 +15,10 @@ This repository contains `Dockerfile` definitions for [lzocateli/vsts-agent-ci](
 
 ## Configuration
 
-For `latest`, you need to set these environment variables:
+For `agent-pools`, you need to set these environment variables:
 
-* `AGENT_PAT` - The personal access token from VSTS. Required.
-* `VS_TENANT` - The VSTS tenant, the value that goes before .visualstudio.com, i.e., on foo.visualstudio.com, should be `foo`. Required.
+* `AGENT_PAT` - Required. The personal access token from VSTS. 
+* `VS_TENANT` - Required. The VSTS tenant, the value that goes before visualstudio.com
 * `AGENT_POOL` - The agent pool. Optional. Default value: `Default`
 
 ## Running
@@ -43,12 +45,12 @@ adding to docker run `-v /agent/_works:/agent/_works`.
 
 ## Maintainers
 
-* [Email: Lincoln Zocateli](mailto:lincoln@nuuve.com.br), [facebook: lincoln.zocateli](https://www.facebook.com/lincoln.zocateli), [@lincolnzocateli](https://twitter.com/lincolnzocateli)
+* [email: Lincoln Zocateli](mailto:lincoln@nuuve.com.br), [facebook: lincoln.zocateli](https://www.facebook.com/lincoln.zocateli), [twitter: @lincolnzocateli](https://twitter.com/lincolnzocateli)
 
 ## License
 
 This software is open source, licensed under the Apache License, Version 2.0.
-See [LICENSE.txt](https://github.com/lzocateli/vsts-agent/blob/master/LICENSE.txt) for details.
+See [LICENSE.txt](https://github.com/lincolnzocateli/vsts-agent-docker/blob/master/LICENSE.txt) for details.
 Check out the terms of the license before you contribute, fork, copy or do anything
 with the code. If you decide to contribute you agree to grant copyright of all your contribution to this project, and agree to
 mention clearly if do not agree to these terms. Your work will be licensed with the project at Apache V2, along the rest of the code.
