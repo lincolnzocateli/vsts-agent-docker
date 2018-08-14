@@ -2,16 +2,16 @@ VSTS Agent Pools and Deployment Pools Docker Image
 ==================================================
 
 This repository contains: 
-- `Dockerfile` definitions for [lincolnzocateli/agent-pools](https://github.com/lincolnzocateli/vsts-agent-docker/tree/master/agent-pools) and 
-- `Dockerfile` definitions for [lincolnzocateli/agent-deployment](https://github.com/lincolnzocateli/vsts-agent-docker/tree/master/agent-deployment) Docker images.
+- `Dockerfile` definitions for [Build Agent/agent-pools](https://github.com/lincolnzocateli/vsts-agent-docker/tree/master/agent-pools) and 
+- `Dockerfile` definitions for [Deployment Agent/agent-deployment](https://github.com/lincolnzocateli/vsts-agent-docker/tree/master/agent-deployment) Docker images.
 
 [![Downloads from Docker Hub](https://img.shields.io/docker/pulls/lzocateli/vsts-agent-ci.svg)](https://registry.hub.docker.com/u/lzocateli/vsts-agent-ci)
 [![Stars on Docker Hub](https://img.shields.io/docker/stars/lzocateli/vsts-agent-ci.svg)](https://registry.hub.docker.com/u/lzocateli/vsts-agent-ci) [![](https://images.microbadger.com/badges/image/lzocateli/vsts-agent-ci.svg)](https://microbadger.com/images/lzocateli/vsts-agent-ci "Get your own image badge on microbadger.com")
 
-## Supported tags
+## Supported
 
-- [`agent-build` (*agent-build/Dockerfile*)](https://github.com/lzocateli/vsts-agent-docker/blob/master/agent-build/Dockerfile)
-- [`agent-deployment` (*agent-deployment/Dockerfile*)](https://github.com/lzocateli/vsts-agent-docker/blob/master/agent-deployment/Dockerfile)
+- [`agent-build` (*agent-pools/Dockerfile*)](https://github.com/lzocateli/vsts-agent-docker/tree/master/agent-pools/Dockerfile)
+- [`agent-deployment` (*agent-deployment/Dockerfile*)](https://github.com/lzocateli/vsts-agent-docker/tree/master/agent-deployment/Dockerfile)
 
 ## Configuration
 
