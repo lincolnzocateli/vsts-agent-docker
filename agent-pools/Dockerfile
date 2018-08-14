@@ -6,7 +6,7 @@ LABEL maintainer="Lincoln Zocateli <lincoln@nuuve.com.br>" \
       org.label-schema.usage="https://nuuve.com.br" \
       org.label-schema.url="https://nuuve.com.br/README.md" \
       org.label-schema.vcs-url="https://nuuve.com.br" \
-      org.label-schema.name="VSTS-Agent-CI" \
+      org.label-schema.name="vsts-agent-ci" \
       org.label-schema.vendor="Nuuve Information Technology" \
       org.label-schema.version="18.04" \
       org.label-schema.schema-version="1.0" \
@@ -34,6 +34,7 @@ RUN apt-get update \
     zip \
     tzdata \
     vim \
+    gedit \
     rsync \
     software-properties-common \
  && rm -rf /var/lib/apt/lists/*
@@ -55,13 +56,22 @@ RUN apt-get update \
 #   && echo "alias codesu='code --user-data-dir /home/root'" >> /root/.bashrc
 
 # Install nano editor:
-RUN curl http://ftp.br.debian.org/debian/pool/main/n/nano/nano_2.7.4-1_amd64.deb > package-nano.deb \
- && dpkg -i package-nano.deb \
- && rm package-nano.deb \
- && apt-get update \
- && apt-get install -y --no-install-recommends \
-    nano \
- && rm -rf /var/lib/apt/lists/*
+# RUN curl http://ftp.br.debian.org/debian/pool/main/n/nano/nano_2.7.4-1_amd64.deb > package-nano.deb \
+#  && dpkg -i package-nano.deb \
+#  && rm package-nano.deb \
+#  && apt-get update \
+#  && apt-get install -y --no-install-recommends \
+#     nano \
+#  && rm -rf /var/lib/apt/lists/*
+
+# Install gedit editor:
+# RUN curl http://ftp.br.debian.org/debian/pool/main/g/gedit/gedit_3.28.1-1_amd64.deb > package-gedit.deb \
+#  && dpkg -i package-gedit.deb \
+#  && rm package-gedit.deb \
+#  && apt-get update \
+#  && apt-get install -y --no-install-recommends \
+#     gedit \
+#  && rm -rf /var/lib/apt/lists/*
 
 #Intall dotnet core dependencies
 RUN apt-get update \
@@ -130,18 +140,18 @@ RUN NODE_VERSION=$( \
 
 
 # Download hosted tool cache
-ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
-RUN azcopy --recursive --source https://vstsagenttools.blob.core.windows.net/tools/hostedtoolcache/linux \
-    --destination $AGENT_TOOLSDIRECTORY
+# ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
+# RUN azcopy --recursive --source https://vstsagenttools.blob.core.windows.net/tools/hostedtoolcache/linux \
+#     --destination $AGENT_TOOLSDIRECTORY
 
 
-# WORKDIR /agent
-# RUN curl -sOSL https://vstsagentpackage.azureedge.net/agent/2.134.2/vsts-agent-linux-x64-2.134.2.tar.gz && \
-#     tar xzf /agent/vsts-agent-linux-x64-2.134.2.tar.gz && \
-#     rm /agent/vsts-agent-linux-x64-2.134.2.tar.gz
+WORKDIR /vsts-agent-ci
+RUN curl -sOSL https://vstsagentpackage.azureedge.net/agent/2.136.1/vsts-agent-linux-x64-2.136.1.tar.gz && \
+    tar xzf /vsts-agent-ci/vsts-agent-linux-x64-2.136.1.tar.gz && \
+    rm /vsts-agent-ci/vsts-agent-linux-x64-2.136.1.tar.gz
 
-# COPY configureAgent.sh runAgent.sh configureAndRun.sh /agent/
+COPY configureAgent.sh runAgent.sh configureAndRun.sh /vsts-agent-ci/
 
-# RUN chmod +x configureAndRun.sh configureAgent.sh runAgent.sh
+RUN chmod +x configureAndRun.sh configureAgent.sh runAgent.sh
 
-# CMD [ "/agent/configureAndRun.sh" ]
+CMD [ "/vsts-agent-ci/configureAndRun.sh" ]

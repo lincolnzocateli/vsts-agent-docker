@@ -1,38 +1,39 @@
 VSTS Agent Pools and Deployment Pools Docker Image
 ==================================================
 
-This repository contains `Dockerfile` definitions for [lzocateli/vsts-agent](https://github.com/lzocateli/docker-vsts-agent) Docker images.
+This repository contains `Dockerfile` definitions for [lzocateli/vsts-agent-ci](https://github.com/lzocateli/vsts-agent-ci) Docker images.
 
-[![Downloads from Docker Hub](https://img.shields.io/docker/pulls/lzocateli/vsts-agent.svg)](https://registry.hub.docker.com/u/lzocateli/vsts-agent)
-[![Stars on Docker Hub](https://img.shields.io/docker/stars/lzocateli/vsts-agent.svg)](https://registry.hub.docker.com/u/lzocateli/vsts-agent) [![](https://images.microbadger.com/badges/image/lzocateli/vsts-agent.svg)](https://microbadger.com/images/lzocateli/vsts-agent "Get your own image badge on microbadger.com")
+[![Downloads from Docker Hub](https://img.shields.io/docker/pulls/lzocateli/vsts-agent-ci.svg)](https://registry.hub.docker.com/u/lzocateli/vsts-agent-ci)
+[![Stars on Docker Hub](https://img.shields.io/docker/stars/lzocateli/vsts-agent-ci.svg)](https://registry.hub.docker.com/u/lzocateli/vsts-agent-ci) [![](https://images.microbadger.com/badges/image/lzocateli/vsts-agent-ci.svg)](https://microbadger.com/images/lzocateli/vsts-agent-ci "Get your own image badge on microbadger.com")
 
 ## Supported tags
 
-- [`agent-build` (*agent-build/Dockerfile*)](https://github.com/lzocateli/docker-vsts-agent/blob/master/agent/Dockerfile)
-- [`agent-deployment` (*agent-deployment/Dockerfile*)](https://github.com/lzocateli/docker-vsts-agent/blob/master/agent-docker/Dockerfile)
+- [`agent-build` (*agent-build/Dockerfile*)](https://github.com/lzocateli/vsts-agent-docker/blob/master/agent-build/Dockerfile)
+- [`agent-deployment` (*agent-deployment/Dockerfile*)](https://github.com/lzocateli/vsts-agent-docker/blob/master/agent-deployment/Dockerfile)
 
 ## Configuration
 
 For `latest`, you need to set these environment variables:
 
 * `AGENT_PAT` - The personal access token from VSTS. Required.
-* `VS_TENANT` - The VSTS tenant, a.k.a. the value that goes before .visualstudio.com, i.e., on foo.visualstudio.com, should be `foo`. Required.
+* `VS_TENANT` - The VSTS tenant, the value that goes before .visualstudio.com, i.e., on foo.visualstudio.com, should be `foo`. Required.
 * `AGENT_POOL` - The agent pool. Optional. Default value: `Default`
-
-For `docker`, you need to set these additional variables:
-* `DOCKER_USERNAME` - Your docker user name. Optional, no default.
-* `DOCKER_PASSWORD` - Your docker password. Optional, no default.
-* `DOCKER_SERVER` - Your docker registries, defaults to Docker's default public
-  registry. Optional.
-
-If you do not specify the Docker username and password the agent will not login.
 
 ## Running
 
 On a Mac, use Docker for Mac, or directy on Linux, run in bash:
 
 ````bash
-docker run --name vsts-agent -ti -e VS_TENANT=$VS_TENANT -e AGENT_PAT=$AGENT_PAT -e DOCKER_USERNAME=$DOCKER_USERNAME -e DOCKER_PASSWORD=$DOCKER_PASSWORD -e DOCKER_SERVER=$DOCKER_SERVER --rm --volume=/var/run/docker.sock:/var/run/docker.sock lzocateli/vsts-agent:docker
+docker run --name vsts-agent-ci 
+           -ti 
+           -e VS_TENANT=$VS_TENANT 
+           -e AGENT_PAT=$AGENT_PAT 
+           -e DOCKER_USERNAME=$DOCKER_USERNAME 
+           -e DOCKER_PASSWORD=$DOCKER_PASSWORD 
+           -e DOCKER_SERVER=$DOCKER_SERVER 
+           --rm 
+           --volume=/var/run/docker.sock:/var/run/docker.sock 
+           lzocateli/vsts-agent-ci
 ````
 
 If you build using Docker containers, be careful with volume mounts, as they
@@ -42,7 +43,7 @@ adding to docker run `-v /agent/_works:/agent/_works`.
 
 ## Maintainers
 
-* [Lincoln Zocateli](mailto:lincoln@nuuve.com.br), [lzocateli](https://www.facebook.com/lincoln.zocateli), [@lincolnzocateli](https://twitter.com/lincolnzocateli)
+* [Email: Lincoln Zocateli](mailto:lincoln@nuuve.com.br), [facebook: lincoln.zocateli](https://www.facebook.com/lincoln.zocateli), [@lincolnzocateli](https://twitter.com/lincolnzocateli)
 
 ## License
 
