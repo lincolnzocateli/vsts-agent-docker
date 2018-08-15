@@ -26,16 +26,17 @@ For `agent-pools`, you need to set these environment variables:
 On a Mac, use Docker for Mac, or directy on Linux, run in bash:
 
 ````bash
-docker run --name vsts-agent-ci 
-           -ti 
-           -e VS_TENANT=$VS_TENANT 
-           -e AGENT_PAT=$AGENT_PAT 
-           -e DOCKER_USERNAME=$DOCKER_USERNAME 
-           -e DOCKER_PASSWORD=$DOCKER_PASSWORD 
-           -e DOCKER_SERVER=$DOCKER_SERVER 
-           --rm 
-           --volume=/var/run/docker.sock:/var/run/docker.sock 
-           lzocateli/vsts-agent-ci
+docker run --name vsts-agent-ci \
+           -ti \
+           -e VS_TENANT=your tenant \
+           -e AGENT_PAT=xxxxxxxx \
+           -e AGENT_POOL=your vsts agent pool \
+           -e DOCKER_USERNAME=your user name \
+           -e DOCKER_PASSWORD=your password \
+           -e DOCKER_SERVER= optional \
+           --rm \
+           --volume=/var/run/docker.sock:/var/run/docker.sock \
+           lzocateli/vsts-agent-ci:1.0
 ````
 
 If you build using Docker containers, be careful with volume mounts, as they
