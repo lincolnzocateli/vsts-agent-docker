@@ -146,12 +146,19 @@ RUN NODE_VERSION=$( \
 
 
 WORKDIR /vsts-agent-ci
-RUN curl -sOSL https://vstsagentpackage.azureedge.net/agent/2.136.1/vsts-agent-linux-x64-2.136.1.tar.gz && \
-    tar xzf /vsts-agent-ci/vsts-agent-linux-x64-2.136.1.tar.gz && \
-    rm /vsts-agent-ci/vsts-agent-linux-x64-2.136.1.tar.gz
+RUN curl -sOSL https://vstsagentpackage.azureedge.net/agent/2.136.1/vsts-agent-linux-x64-2.136.1.tar.gz \
+ && tar xzf /vsts-agent-ci/vsts-agent-linux-x64-2.136.1.tar.gz \
+ && rm /vsts-agent-ci/vsts-agent-linux-x64-2.136.1.tar.gz
 
-COPY configureAgent.sh runAgent.sh configureAndRun.sh /vsts-agent-ci/
+#COPY configureAgent.sh runAgent.sh configureAndRun.sh /vsts-agent-ci/
 
-RUN chmod +x configureAndRun.sh configureAgent.sh runAgent.sh
+#RUN chmod +x configureAndRun.sh configureAgent.sh runAgent.sh
 
-CMD [ "/vsts-agent-ci/configureAndRun.sh" ]
+#CMD [ "/vsts-agent-ci/configureAndRun.sh" ]
+
+RUN git clone -b master https://github.com/lincolnzocateli/vsts-agent-docker.git \
+ && cp ./vsts-agent-docker/agent-pools/*.sh . \
+ && rm -rf vsts-agent-docker \
+ && chmod +x *.sh 
+
+ENTRYPOINT ["/vsts-agent-ci/configureAndRun.sh"]

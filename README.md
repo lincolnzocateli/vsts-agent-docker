@@ -10,8 +10,8 @@ This repository contains:
 
 ## Supported
 
-- [`agent-build` (*agent-pools/Dockerfile*)](https://github.com/lzocateli/vsts-agent-docker/tree/master/agent-pools/Dockerfile)
-- [`agent-deployment` (*agent-deployment/Dockerfile*)](https://github.com/lzocateli/vsts-agent-docker/tree/master/agent-deployment/Dockerfile)
+- [`agent-build` (*agent-pools/Dockerfile*)](https://github.com/lincolnzocateli/vsts-agent-docker/blob/master/agent-pools/Dockerfile)
+- [`agent-deployment` (*agent-deployment/Dockerfile*)](https://github.com/lincolnzocateli/vsts-agent-docker/blob/master/agent-deployment/Dockerfile)
 
 ## Configuration
 
