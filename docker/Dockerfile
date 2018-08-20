@@ -6,7 +6,7 @@ LABEL maintainer="Lincoln Zocateli <lincoln@nuuve.com.br>" \
       org.label-schema.usage="https://nuuve.com.br" \
       org.label-schema.url="https://nuuve.com.br/README.md" \
       org.label-schema.vcs-url="https://nuuve.com.br" \
-      org.label-schema.name="vsts-agent-ci" \
+      org.label-schema.name="vsts-agent-pool" \
       org.label-schema.vendor="Nuuve Information Technology" \
       org.label-schema.version="18.04" \
       org.label-schema.schema-version="1.0" \
@@ -145,10 +145,10 @@ RUN NODE_VERSION=$( \
 #     --destination $AGENT_TOOLSDIRECTORY
 
 
-WORKDIR /vsts-agent-ci
+WORKDIR /vsts-agent-pool
 RUN curl -sOSL https://vstsagentpackage.azureedge.net/agent/2.136.1/vsts-agent-linux-x64-2.136.1.tar.gz \
- && tar xzf /vsts-agent-ci/vsts-agent-linux-x64-2.136.1.tar.gz \
- && rm /vsts-agent-ci/vsts-agent-linux-x64-2.136.1.tar.gz
+ && tar xzf vsts-agent-linux-x64-2.136.1.tar.gz \
+ && rm vsts-agent-linux-x64-2.136.1.tar.gz
 
 #COPY configureAgent.sh runAgent.sh configureAndRun.sh /vsts-agent-ci/
 
@@ -156,9 +156,9 @@ RUN curl -sOSL https://vstsagentpackage.azureedge.net/agent/2.136.1/vsts-agent-l
 
 #CMD [ "/vsts-agent-ci/configureAndRun.sh" ]
 
-RUN git clone -b master https://github.com/lincolnzocateli/vsts-agent-docker.git \
- && cp ./vsts-agent-docker/agent-pools/*.sh . \
- && rm -rf vsts-agent-docker \
+RUN git clone -b master https://github.com/lincolnzocateli/vsts-agent-pool.git \
+ && cp ./vsts-agent-pool/agent/*.sh . \
+ && rm -rf vsts-agent-pool \
  && chmod +x *.sh 
 
-ENTRYPOINT ["/vsts-agent-ci/configureAndRun.sh"]
+ENTRYPOINT ["/vsts-agent-pool/configureAndRun.sh"]
