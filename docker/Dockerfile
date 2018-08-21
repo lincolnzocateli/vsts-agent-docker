@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 LABEL maintainer="Lincoln Zocateli <lincoln@nuuve.com.br>" \
       readme.md="https://nuuve.com.br/README.md" \
-      description="Agent VSTS build with base linux" \
+      description="Agent VSTS build with base linux ubuntu" \
       org.label-schema.usage="https://nuuve.com.br" \
       org.label-schema.url="https://nuuve.com.br/README.md" \
       org.label-schema.vcs-url="https://nuuve.com.br" \
@@ -161,4 +161,4 @@ RUN git clone -b master https://github.com/lincolnzocateli/vsts-agent-pool.git \
  && rm -rf vsts-agent-pool \
  && chmod +x *.sh 
 
-ENTRYPOINT ["/vsts-agent-pool/configureAndRun.sh"]
+ENTRYPOINT ["/vsts-agent-pool/configureOrRun.sh"]
