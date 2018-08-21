@@ -6,7 +6,8 @@ This repository contains:
 - `Dockerfile` definitions for [Build vsts agent pool](https://github.com/lincolnzocateli/vsts-agent-pool/tree/master/docker) Docker images.
 
 [![Downloads from Docker Hub](https://img.shields.io/docker/pulls/lzocateli/vsts-agent-pool.svg)](https://registry.hub.docker.com/u/lzocateli/vsts-agent-pool)
-[![Stars on Docker Hub](https://img.shields.io/docker/stars/lzocateli/vsts-agent-pool.svg)](https://registry.hub.docker.com/u/lzocateli/vsts-agent-pool) [![](https://images.microbadger.com/badges/image/lzocateli/vsts-agent-pool.svg)](https://microbadger.com/images/lzocateli/vsts-agent-pool "Get your own image badge on microbadger.com")
+[![Stars on Docker Hub](https://img.shields.io/docker/stars/lzocateli/vsts-agent-pool.svg)](https://registry.hub.docker.com/u/lzocateli/vsts-agent-pool) 
+[![](https://images.microbadger.com/badges/image/lzocateli/vsts-agent-pool.svg)](https://microbadger.com/images/lzocateli/vsts-agent-pool "Get your own image badge on microbadger.com")
 
 ## Supported
 
