@@ -1,5 +1,5 @@
-VSTS Agent Pools and Deployment Pools Docker Image
-==================================================
+## VSTS Agent Pools Docker Image
+================================
 
 This repository contains: 
 - `Scripts` definitions for [Build vsts agent pool](https://github.com/lincolnzocateli/vsts-agent-pool/tree/master/agent) and 
@@ -37,7 +37,7 @@ docker run --name vsts-agent-pool \
            -e DOCKER_SERVER= optional \
            --rm \
            --volume=/var/run/docker.sock:/var/run/docker.sock \
-           lzocateli/vsts-agent-pool:1.0
+           lzocateli/vsts-agent-pool:latest
 ````
 
 If you build using Docker containers, be careful with volume mounts, as they

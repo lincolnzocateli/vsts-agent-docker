@@ -18,11 +18,11 @@ ifRun () {
   fi
 }
 
-echo Starting configuration for $(hostname)...  in dir $(DIR)
+echo Starting configuration for $hostname ...  in dir $DIR
 ifRun preConfigure.sh
 . $DIR/configureAgent.sh
 ifRun postConfigure.sh
-echo Configuration done. Starting run for $(hostname)...  in dir $(DIR)
+echo Configuration done. Starting run for $hostname ...  in dir $DIR
 ifRun preRun.sh
 . $DIR/runAgent.sh
 ifRun postRun.sh

@@ -95,7 +95,7 @@ RUN wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64 \
  && rm -rf azcopy.tar.gz
 
 # Install .NET Core SDK and initialize package cache
-RUN curl https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb > packages-microsoft-prod.deb \
+RUN curl https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb > packages-microsoft-prod.deb \
  && dpkg -i packages-microsoft-prod.deb \
  && rm packages-microsoft-prod.deb \
  && apt-get update \

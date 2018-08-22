@@ -14,7 +14,7 @@ export DOTNET_VERSION=$(dotnet --version)
 
 if [ ! -f $DIR/.credentials ]; then
   
-  echo Starting work_dir $(work_dir) for $(hostname)...
+  echo Starting work_dir $work_dir for $hostname ...
 
   vs_tenant=$VS_TENANT
   agent_pool=$AGENT_POOL
