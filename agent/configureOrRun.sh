@@ -1,4 +1,5 @@
 #!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 work_dir="$DIR/_works/$(hostname)"
 
 if ! [ -d $work_dir ]; then
