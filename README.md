@@ -1,5 +1,4 @@
-## VSTS Agent Pools Docker Image
-===================================
+### VSTS Agent Pools Docker Image
 
 This repository contains: 
 - `Scripts` definitions for [Build vsts agent pool](https://github.com/lincolnzocateli/vsts-agent-pool/tree/master/agent) and 
