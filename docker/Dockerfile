@@ -9,7 +9,7 @@ LABEL maintainer="Lincoln Zocateli <lincoln@nuuve.com.br>" \
       org.label-schema.name="vsts-agent-pool" \
       org.label-schema.vendor="Nuuve Information Technology" \
       org.label-schema.version="18.04" \
-      org.label-schema.schema-version="1.0" \
+      org.label-schema.schema-version="1.3" \
       org.label-schema.docker.cmd="docker run -name nuuve -it ${IMAGE_NAME}" \
       org.label-schema.docker.cmd.test="docker run -it ${IMAGE_NAME}" 
 
