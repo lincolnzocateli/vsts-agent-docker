@@ -52,8 +52,8 @@ docker run --name vsts-agent-pool \
 
 If you build using Docker containers, be careful with volume mounts, as they
 will be mounted on the Docker host, not on the agent's file system. For that to
-work as expected mount `/agent/_works` from the host to the agent container,
-adding to docker run `-v /agent/_works:/agent/_works`.
+work as expected mount `/vsts-agent-pool/_works` from the host to the agent container,
+adding to docker run `-v /vsts-agent-pool/_works:my_container_dir`.
 
 ## Maintainers
 
