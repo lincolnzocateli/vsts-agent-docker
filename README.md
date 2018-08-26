@@ -34,6 +34,7 @@ docker run --name vsts-agent-pool \
            -e AGENT_PAT=xxxxxxxx \
            -e AGENT_POOL=your vsts agent pool \
            --volume=/var/run/docker.sock:/var/run/docker.sock \
+           -v /home/myvolume/teste:/vsts-agent-pool/_works \
            lzocateli/vsts-agent-pool:tag
 ````
 
@@ -47,13 +48,14 @@ docker run --name vsts-agent-pool \
            -e AGENT_POOL=your vsts agent pool \
            --rm \
            --volume=/var/run/docker.sock:/var/run/docker.sock \
+           -v /home/myvolume/teste:/vsts-agent-pool/_works \
            lzocateli/vsts-agent-pool:tag
 ````
 
 If you build using Docker containers, be careful with volume mounts, as they
 will be mounted on the Docker host, not on the agent's file system. For that to
 work as expected mount `/vsts-agent-pool/_works` from the host to the agent container,
-adding to docker run `-v /vsts-agent-pool/_works:my_container_dir`.
+adding to docker run `-v /home/myvolume/teste:/vsts-agent-pool/_works`.
 
 ## Maintainers
 

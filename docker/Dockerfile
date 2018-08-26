@@ -1,31 +1,32 @@
 FROM ubuntu:18.04
 
 LABEL maintainer="Lincoln Zocateli <lincoln@nuuve.com.br>" \
-        org.label-schema.readme.md="https://nuuve.com.br/README.md" \
-        org.label-schema.name="vsts-agent-pool" \
         org.label-schema.description="Agent VSTS build with base linux ubuntu" \
-        org.label-schema.url="https://nuuve.com.br/README.md" \
-        org.label-schema.vcs-url="https://github.com/lincolnzocateli/vsts-agent-pool" \
-        org.label-schema.usage="https://github.com/lincolnzocateli/vsts-agent-pool/tree/tag" \
+        org.label-schema.readme.md="https://hub.docker.com/r/lzocateli/vsts-agent-pool/" \
+        org.label-schema.name="vsts-agent-pool" \
+        org.label-schema.url="https://nuuve.com.br" \
+        org.label-schema.vcs-url="https://github.com/lincolnzocateli/vsts-agent-pool/tree/master" \
+        org.label-schema.usage="https://github.com/lincolnzocateli/vsts-agent-pool" \
         org.label-schema.vendor="Nuuve Information Technology" \
         org.label-schema.version="1.0" \
-        org.label-schema.schema-version="v1.3.1" \
+        org.label-schema.schema-version="v1.3.2" \
         org.label-schema.docker.cmd="docker run --name vsts-agent-pool \
-           -d \
-           -e VS_TENANT=your tenant \
-           -e AGENT_PAT=your vsts PAT \
-           -e AGENT_POOL=your vsts pull \
-           --rm \
-           --volume=/var/run/docker.sock:/var/run/docker.sock \
-           ${IMAGE_NAME}:${tag} " \
+        -d \
+        -e VS_TENANT=your vsts tenant \
+        -e AGENT_PAT=your vsts PAT \
+        -e AGENT_POOL=your vsts pool \
+        --volume=/var/run/docker.sock:/var/run/docker.sock \
+        -v /home/my dir/teste:/vsts-agent-pool/_works \
+        lzocateli/vsts-agent-pool:vX.Y.Z " \
         org.label-schema.docker.cmd.test="docker run --name vsts-agent-pool \
-           -ti \
-           -e VS_TENANT=your tenant \
-           -e AGENT_PAT=your vsts PAT \
-           -e AGENT_POOL=your vsts pull \
-           --rm \
-           --volume=/var/run/docker.sock:/var/run/docker.sock \
-           ${IMAGE_NAME}:${tag} "  
+        -ti \
+        -e VS_TENANT=your vsts tenant \
+        -e AGENT_PAT=your vsts PAT \
+        -e AGENT_POOL=your vsts pool \
+        --rm \
+        --volume=/var/run/docker.sock:/var/run/docker.sock \
+        -v /home/my dir/teste:/vsts-agent-pool/_works \
+        lzocateli/vsts-agent-pool:vX.Y.Z "  
 
 
 # Install basic command-line utilities
