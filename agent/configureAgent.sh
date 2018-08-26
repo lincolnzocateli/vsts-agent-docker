@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo Starting $(pwd)/configureAgent.sh
+
 if [ -z $AGENT_POOL ]; then AGENT_POOL=Default; fi
 if [ -z $VS_TENANT ]; then
   >&2 echo 'Variable "$VS_TENANT" is not set.'
@@ -13,19 +15,16 @@ fi
 export DOTNET_VERSION=$(dotnet --version)
 
 if [ ! -f $DIR/.credentials ]; then
-  
-  echo Starting work_dir $work_dir for $hostname ...
+
+  work_dir="$DIR/_works/$(hostname)"
+
+  echo Starting work_dir $work_dir for $(hostname) ...
 
   vs_tenant=$VS_TENANT
   agent_pool=$AGENT_POOL
   agent_pat=$AGENT_PAT
 
   unset AGENT_PAT
-  #unset AGENT_POOL
-  #unset VS_TENANT
-  
-    
-  work_dir="$DIR/_works/$(hostname)"
   
   if ! [ -d $work_dir ]; then
     sudo mkdir -p $work_dir

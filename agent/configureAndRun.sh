@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo Starting $(pwd)/configureAndRun.sh
+
 trap '{ pid=$(pgrep Agent.Listener); kill -2 $pid; while kill -0 $pid 2> /dev/null; do sleep 1; done; echo "Agent stopped."; exit 0; }' SIGTERM
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -18,11 +20,11 @@ ifRun () {
   fi
 }
 
-echo Starting configuration for $hostname ...  in dir $DIR
+echo Starting configuration for $(hostname) ...  in dir $DIR
 ifRun preConfigure.sh
 . $DIR/configureAgent.sh
 ifRun postConfigure.sh
-echo Configuration done. Starting run for $hostname ...  in dir $DIR
+echo Configuration done. Starting run for $(hostname) ...  in dir $DIR
 ifRun preRun.sh
 . $DIR/runAgent.sh
 ifRun postRun.sh
