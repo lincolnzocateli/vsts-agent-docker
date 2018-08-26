@@ -25,18 +25,29 @@ For `agent`, you need to set these environment variables:
 
 On a Mac, use Docker for Mac, or directy on Linux, run in bash:
 
+To start a container in detached mode:
+
+````bash
+docker run --name vsts-agent-pool \
+           -d \
+           -e VS_TENANT=your tenant \
+           -e AGENT_PAT=xxxxxxxx \
+           -e AGENT_POOL=your vsts agent pool \
+           --volume=/var/run/docker.sock:/var/run/docker.sock \
+           lzocateli/vsts-agent-pool:tag
+````
+
+To start a container in foreground mode:
+
 ````bash
 docker run --name vsts-agent-pool \
            -ti \
            -e VS_TENANT=your tenant \
            -e AGENT_PAT=xxxxxxxx \
            -e AGENT_POOL=your vsts agent pool \
-           -e DOCKER_USERNAME=your user name \
-           -e DOCKER_PASSWORD=your password \
-           -e DOCKER_SERVER= optional \
            --rm \
            --volume=/var/run/docker.sock:/var/run/docker.sock \
-           lzocateli/vsts-agent-pool:latest
+           lzocateli/vsts-agent-pool:tag
 ````
 
 If you build using Docker containers, be careful with volume mounts, as they

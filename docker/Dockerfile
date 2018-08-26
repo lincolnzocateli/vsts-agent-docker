@@ -1,17 +1,31 @@
 FROM ubuntu:18.04
 
 LABEL maintainer="Lincoln Zocateli <lincoln@nuuve.com.br>" \
-      readme.md="https://nuuve.com.br/README.md" \
-      description="Agent VSTS build with base linux ubuntu" \
-      org.label-schema.usage="https://nuuve.com.br" \
-      org.label-schema.url="https://nuuve.com.br/README.md" \
-      org.label-schema.vcs-url="https://nuuve.com.br" \
-      org.label-schema.name="vsts-agent-pool" \
-      org.label-schema.vendor="Nuuve Information Technology" \
-      org.label-schema.version="18.04" \
-      org.label-schema.schema-version="1.3" \
-      org.label-schema.docker.cmd="docker run -name nuuve -it ${IMAGE_NAME}" \
-      org.label-schema.docker.cmd.test="docker run -it ${IMAGE_NAME}" 
+        org.label-schema.readme.md="https://nuuve.com.br/README.md" \
+        org.label-schema.name="vsts-agent-pool" \
+        org.label-schema.description="Agent VSTS build with base linux ubuntu" \
+        org.label-schema.url="https://nuuve.com.br/README.md" \
+        org.label-schema.vcs-url="https://github.com/lincolnzocateli/vsts-agent-pool" \
+        org.label-schema.usage="https://github.com/lincolnzocateli/vsts-agent-pool/tree/tag" \
+        org.label-schema.vendor="Nuuve Information Technology" \
+        org.label-schema.version="1.0" \
+        org.label-schema.schema-version="v1.3.1" \
+        org.label-schema.docker.cmd="docker run --name vsts-agent-pool \
+           -d \
+           -e VS_TENANT=your tenant \
+           -e AGENT_PAT=your vsts PAT \
+           -e AGENT_POOL=your vsts pull \
+           --rm \
+           --volume=/var/run/docker.sock:/var/run/docker.sock \
+           ${IMAGE_NAME}:${tag} " \
+        org.label-schema.docker.cmd.test="docker run --name vsts-agent-pool \
+           -ti \
+           -e VS_TENANT=your tenant \
+           -e AGENT_PAT=your vsts PAT \
+           -e AGENT_POOL=your vsts pull \
+           --rm \
+           --volume=/var/run/docker.sock:/var/run/docker.sock \
+           ${IMAGE_NAME}:${tag} "  
 
 
 # Install basic command-line utilities
@@ -139,22 +153,10 @@ RUN NODE_VERSION=$( \
  && rm "node-v$NODE_VERSION-linux-x64.tar.xz"
 
 
-# Download hosted tool cache
-# ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
-# RUN azcopy --recursive --source https://vstsagenttools.blob.core.windows.net/tools/hostedtoolcache/linux \
-#     --destination $AGENT_TOOLSDIRECTORY
-
-
 WORKDIR /vsts-agent-pool
 RUN curl -sOSL https://vstsagentpackage.azureedge.net/agent/2.136.1/vsts-agent-linux-x64-2.136.1.tar.gz \
  && tar xzf vsts-agent-linux-x64-2.136.1.tar.gz \
  && rm vsts-agent-linux-x64-2.136.1.tar.gz
-
-#COPY configureAgent.sh runAgent.sh configureAndRun.sh /vsts-agent-ci/
-
-#RUN chmod +x configureAndRun.sh configureAgent.sh runAgent.sh
-
-#CMD [ "/vsts-agent-ci/configureAndRun.sh" ]
 
 RUN git clone -b master https://github.com/lincolnzocateli/vsts-agent-pool.git \
  && cp ./vsts-agent-pool/agent/*.sh . \
