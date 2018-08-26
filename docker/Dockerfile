@@ -9,7 +9,7 @@ LABEL maintainer="Lincoln Zocateli <lincoln@nuuve.com.br>" \
         org.label-schema.usage="https://github.com/lincolnzocateli/vsts-agent-pool" \
         org.label-schema.vendor="Nuuve Information Technology" \
         org.label-schema.version="1.0" \
-        org.label-schema.schema-version="v1.3.2" \
+        org.label-schema.schema-version="v1.0.0" \
         org.label-schema.docker.cmd="docker run --name vsts-agent-pool \
         -d \
         -e VS_TENANT=your vsts tenant \
