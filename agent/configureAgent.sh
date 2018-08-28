@@ -11,6 +11,7 @@ if [ -z $AGENT_PAT ]; then
   >&2 echo 'Variable "$AGENT_PAT" is not set.'
   exit 2
 fi
+if [ -z $AGENT_NAME ]; then AGENT_NAME=$(uname -n); fi
 
 export DOTNET_VERSION=$(dotnet --version)
 
@@ -23,6 +24,7 @@ if [ ! -f $DIR/.credentials ]; then
   vs_tenant=$VS_TENANT
   agent_pool=$AGENT_POOL
   agent_pat=$AGENT_PAT
+  agent_name=$AGENT_NAME
 
   unset AGENT_PAT
   
@@ -35,7 +37,7 @@ if [ ! -f $DIR/.credentials ]; then
             --pool $agent_pool \
             --auth PAT \
             --token $agent_pat \
-            --agent $(hostname) \
+            --agent $agent_name \
             --work $work_dir \
             --unattended
   

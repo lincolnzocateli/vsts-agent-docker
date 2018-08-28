@@ -20,6 +20,7 @@ For `agent`, you need to set these environment variables:
 * `VS_TENANT` - Required. The VSTS tenant, the value that goes before visualstudio.com
 * `AGENT_PAT` - Required. The personal access token from VSTS. 
 * `AGENT_POOL` - The agent pool. Optional. Default value: `Default`
+* `AGENT_NAME` - Name of agent to be displayed in VSTS Agent Pool
 
 ## Running
 
@@ -28,34 +29,35 @@ On a Mac, use Docker for Mac, or directy on Linux, run in bash:
 To start a container in detached mode:
 
 ````bash
-docker run --name vsts-agent-pool \
+docker run --name my-agent-pool \
            -d \
            -e VS_TENANT=your tenant \
            -e AGENT_PAT=xxxxxxxx \
            -e AGENT_POOL=your vsts agent pool \
+           -e AGENT_NAME=$(uname -n)
            --volume=/var/run/docker.sock:/var/run/docker.sock \
-           -v /home/myvolume/teste:/vsts-agent-pool/_works \
+           -v /home/myvolume:/vsts-agent-pool/_works \
            lzocateli/vsts-agent-pool:tag
 ````
 
 To start a container in foreground mode:
 
 ````bash
-docker run --name vsts-agent-pool \
+docker run --name my-agent-pool \
            -ti \
            -e VS_TENANT=your tenant \
            -e AGENT_PAT=xxxxxxxx \
            -e AGENT_POOL=your vsts agent pool \
+           -e AGENT_NAME=$(uname -n)
            --rm \
            --volume=/var/run/docker.sock:/var/run/docker.sock \
-           -v /home/myvolume/teste:/vsts-agent-pool/_works \
+           -v /home/myvolume:/vsts-agent-pool/_works \
            lzocateli/vsts-agent-pool:tag
 ````
 
-If you build using Docker containers, be careful with volume mounts, as they
-will be mounted on the Docker host, not on the agent's file system. For that to
-work as expected mount `/vsts-agent-pool/_works` from the host to the agent container,
-adding to docker run `-v /home/myvolume/teste:/vsts-agent-pool/_works`.
+The -v parameter indicates that a volume is being mounted on the container host, 
+so it will be possible to keep the _works folder even if the container is not running.
+If you do not want to use a volume on the host, just remove the -v line from docker run.
 
 ## Maintainers
 

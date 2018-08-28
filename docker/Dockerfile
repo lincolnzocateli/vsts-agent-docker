@@ -2,14 +2,13 @@ FROM ubuntu:18.04
 
 LABEL maintainer="Lincoln Zocateli <lincoln@nuuve.com.br>" \
         org.label-schema.description="Agent VSTS build with base linux ubuntu" \
-        org.label-schema.readme.md="https://hub.docker.com/r/lzocateli/vsts-agent-pool/" \
         org.label-schema.name="vsts-agent-pool" \
         org.label-schema.url="https://nuuve.com.br" \
         org.label-schema.vcs-url="https://github.com/lincolnzocateli/vsts-agent-pool/tree/master" \
-        org.label-schema.usage="https://github.com/lincolnzocateli/vsts-agent-pool" \
+        org.label-schema.usage="https://github.com/lincolnzocateli/vsts-agent-pool/blob/master/README.md" \
         org.label-schema.vendor="Nuuve Information Technology" \
-        org.label-schema.version="1.0" \
-        org.label-schema.schema-version="v1.0.0" \
+        org.label-schema.version="v2.0.0" \
+        org.label-schema.schema-version="1.0.0" \
         org.label-schema.docker.cmd="docker run --name vsts-agent-pool \
         -d \
         -e VS_TENANT=your vsts tenant \
@@ -164,4 +163,4 @@ RUN git clone -b master https://github.com/lincolnzocateli/vsts-agent-pool.git \
  && rm -rf vsts-agent-pool \
  && chmod +x *.sh 
 
-ENTRYPOINT ["/vsts-agent-pool/configureOrRun.sh"]
+CMD ["/vsts-agent-pool/configureOrRun.sh"]
