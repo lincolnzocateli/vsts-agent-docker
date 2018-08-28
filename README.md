@@ -34,7 +34,7 @@ docker run --name my-agent-pool \
            -e VS_TENANT=your tenant \
            -e AGENT_PAT=xxxxxxxx \
            -e AGENT_POOL=your vsts agent pool \
-           -e AGENT_NAME=$(uname -n)
+           -e AGENT_NAME=$(uname -n) \
            --volume=/var/run/docker.sock:/var/run/docker.sock \
            -v /home/myvolume:/vsts-agent-pool/_works \
            lzocateli/vsts-agent-pool:tag
@@ -48,7 +48,7 @@ docker run --name my-agent-pool \
            -e VS_TENANT=your tenant \
            -e AGENT_PAT=xxxxxxxx \
            -e AGENT_POOL=your vsts agent pool \
-           -e AGENT_NAME=$(uname -n)
+           -e AGENT_NAME=$(uname -n) \
            --rm \
            --volume=/var/run/docker.sock:/var/run/docker.sock \
            -v /home/myvolume:/vsts-agent-pool/_works \
